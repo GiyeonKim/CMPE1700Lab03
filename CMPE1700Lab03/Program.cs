@@ -6,110 +6,70 @@ using System.Threading.Tasks;
 
 namespace CMPE1700Lab03
 {
-    class Program
+   public class Program
     {
-        static void Main(string[] args)
+       public static void Main(string[] args)
         {
-            //making list of vectors
-            //adding the vectors to the list
-            Vector ListVect = new Vector();
-            ListVect = VectUtils.Add(ListVect, 5);
-            ListVect = VectUtils.Add(ListVect, 8);
-            ListVect = VectUtils.Add(ListVect, 6);
-            ListVect = VectUtils.Add(ListVect, 30);
-            ListVect = VectUtils.Add(ListVect, 1);
+          
 
-            //find the int in the list
-            //count the list
-            
-            int a = VectUtils.Find(ListVect, 10);
-            int b = VectUtils.Count(ListVect, 4);
-            int c = VectUtils.Largest(ListVect, 0);
-            int s = VectUtils.Smallest(ListVect, 0);
+            Vector vec = new Vector();
 
 
-            //showing the list of the vector
-            Console.WriteLine("Vector list");
-            for (int i = 0; i < ListVect.Length; i++)
-            {
-                Console.WriteLine(ListVect.Values[i]);
-            }
+            for (int i = 0; i < 20; ++i)
+
+                VectUtils.Add(vec, i);
+
+            Console.WriteLine(VectUtils.Length(vec) + "-"
+
+                + VectUtils.Largest(vec) + "-"
+
+                + VectUtils.Smallest(vec));
+
+            vec = VectUtils.Grow(vec);
+
+            Console.Write(VectUtils.Size(vec) + "-");
+
+            vec = VectUtils.Shrink(vec);
+
+            Console.WriteLine(VectUtils.Size(vec));
+
+            VectUtils.Insert(vec, 5, 1);
+
+            Console.WriteLine(VectUtils.Find(vec, -1) + "-"
+
+                + VectUtils.Count(vec, -1));
+
+            Console.WriteLine(VectUtils.Find(vec, 5) + "-"
+
+                + VectUtils.Count(vec, 5));
+
+            for (int i = 0; i < VectUtils.Length(vec); ++i)
+
+                Console.Write(VectUtils.Item(vec, i));
+
+            Console.WriteLine();
 
 
-            //find the largest value in list
-            //find the smallest value in the list
-            Console.WriteLine("The Largest is at " + c);
-            Console.WriteLine("The smalles is  at " + s + "\n");
+            VectUtils.Sort(vec, true);
+
+            for (int i = 0; i < VectUtils.Length(vec); ++i)
+
+                Console.Write(VectUtils.Item(vec, i));
+
+            Console.WriteLine();
 
 
-            //reversing the vector list
-            Console.WriteLine("\nReverse");
+            VectUtils.Reverse(vec);
 
-            //print out the reverse version of the vector list
-            VectUtils.Reverse(ListVect);
-            for (int i = 0; i < ListVect.Length; i++)
-            {
-                Console.Write(ListVect.Values[i] + " ");
-            }
+            for (int i = 0; i < VectUtils.Length(vec); ++i)
 
-            // sortingn the vector list in ascending
-            Console.WriteLine("\n\nSort (ascending)");
+                Console.Write(VectUtils.Item(vec, i));
 
-            //prints out the asceding list vector 
-            VectUtils.Sort(ListVect, false); // descending = true     ascending = false
-            for (int i = 0; i < ListVect.Length; i++)
-            {
-                Console.Write(ListVect.Values[i] + " ");
-            }
-
-
-            a = VectUtils.Find(ListVect, 11);
-            b = VectUtils.Count(ListVect, 7);
-            c = VectUtils.Largest(ListVect, 0);
-            s = VectUtils.Smallest(ListVect, 0);
-            Console.WriteLine("\n\nAfter sorting");
-            Console.WriteLine("The Largest is at " + c);
-            Console.WriteLine("The smalles is  at " + s + "\n");
-
-            //deleting one of value in the vector list
-            Console.WriteLine("\nDelete middle value in vector list");
-
-            VectUtils.Delete(ListVect, 2); ListVect.Length -= 1; // **important to put this in for delete
-            //print out the list of the value after deleting the item
-            for (int i = 0; i < ListVect.Length; i++)
-            {
-                Console.Write(ListVect.Values[i] + " ");
-            }
-            //sorting the list vector by descending
-            Console.WriteLine("\n\nSort (descending)");
-
-            VectUtils.Sort(ListVect, true); // descending = true     ascending = false
-            for (int i = 0; i < ListVect.Length; i++)
-            {
-                Console.Write(ListVect.Values[i] + " ");
-            }
-
-            a = VectUtils.Find(ListVect, 11);
-            b = VectUtils.Count(ListVect, 7);
-
-
-            //printout the largest value in listvect after sort descending
-            //printout the smallest value in listvect after sort descending
-            c = VectUtils.Largest(ListVect, 0);
-            s = VectUtils.Smallest(ListVect, 0);
-            Console.WriteLine("\nThe Largest is at " + c);
-            Console.WriteLine("The smalles is  at " + s + "\n");
-            
-            //shrinked the size of the vector
-            Console.WriteLine("Shrink the size of the vector list");
-            VectUtils.Shrink(ListVect);
-            for (int i = 0; i < ListVect.Length; i++)
-            {
-                Console.Write(ListVect.Values[i] + " ");
-            }
-
-
+            Console.WriteLine();
             Console.ReadKey();
+
+
+           
         }
     }
 }

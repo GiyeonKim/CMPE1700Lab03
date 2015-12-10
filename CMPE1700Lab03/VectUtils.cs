@@ -159,7 +159,7 @@ namespace CMPE1700Lab03
         }
 
         //Returns the number of items currently stored in the vector
-        static int Length(Vector vector)
+      public  static int Length(Vector vector)
         {
             return vector.Length;
         }
@@ -167,7 +167,7 @@ namespace CMPE1700Lab03
         //Returns the maximum capacity of the current vector
         //Count is how many ints are in there now.
         //Size is how many I can fit before I have to grow
-        static int Size(Vector vector)
+       public static int Size(Vector vector)
         {
             if (vector.Values != null)
                 return vector.Values.Length;
@@ -191,6 +191,7 @@ namespace CMPE1700Lab03
                 Vec.Values[i] = vector.Values[i];
             }
             vector.Values = new int[vector.Length * 2];
+            vector.Length = vector.Length * 2;
             for (int i = 0; i < Vec.Length; i++)
             {
                 vector.Values[i] = Vec.Values[i];
@@ -242,12 +243,13 @@ namespace CMPE1700Lab03
 
         //Returns the location (0 is first) of the largest 
         //item.  -1 if error (for example, no items).
-        public static int Largest(Vector vector, int val)
+        public static int Largest(Vector vector)
         {
             if (vector.Values == null)
             {
                 return -1;
             }
+            int val = vector.Values[0];
             for (int i = 0; i < vector.Length; i++)
             {
                 if (vector.Values[i] > val)
@@ -265,13 +267,13 @@ namespace CMPE1700Lab03
 
         //Returns the location (0 is first) of the smallest 
         //item.  -1 if error (for example, no items).
-        public static int Smallest(Vector vector, int val)
+        public static int Smallest(Vector vector)
         {
             if (vector.Values == null)
             {
                 return -1;
             }
-            val = vector.Values[0];
+            int val = vector.Values[0];
             for (int i = 0; i < vector.Length; i++)
             {
                 if (vector.Values[i] == 0)
@@ -306,7 +308,7 @@ namespace CMPE1700Lab03
             }
             Vector v = new Vector();
             v.Values = new int[vector.Length];
-            v.Length = vector.Length;
+            v.Length = vector.Length/2;
             for (int i = 0; i < vector.Length; i++)
             {
                 v.Values[i] = vector.Values[i];
